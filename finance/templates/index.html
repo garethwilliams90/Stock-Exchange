@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <!-- Render a table containing the user's portfolio-->
+    <h1>Portfolio Overview:</h1>
+    <h2>Current Portfolio Value: {{ port_val }} (USD)</h2>
+    <h3>Your Holdings:</h3>
+
+    <table class="table">
+       <thead>
+         <tr>
+           <th scope="col">Stock code</th>
+           <th scope="col">Holdings</th>
+           <th scope="col">Total value (USD)</th>
+           <th scope="col">Available Cash: ${{ av_cash }}</th>
+         </tr>
+       </thead>
+       <tbody>
+
+        <!-- To use the for loop we need to create a dictionary that we can loop through -->
+        {% for stock in total_port %}
+         <tr>
+           <td>{{ stock.symbol }}</td>
+           <td>{{ stock.holdings }}</td>
+           <td>{{ stock.order_price }}</td>
+           <td>
+              <form action="/sell" method="post">
+                <button class="btn btn-primary" type="submit">Sell</button>
+                <button class="btn btn-primary" type="submit">Top Up</button>
+              </form>
+           </td>
+         </tr>
+         {% endfor %}
+
+       </tbody>
+     </table>
+
+{% endblock %}

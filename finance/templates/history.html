@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+
+    <!-- Render a table containing the user's portfolio-->
+    <h1>Portfolio History:</h1>
+    <h3>Your Transactions:</h3>
+
+    <table class="table">
+       <thead>
+         <tr>
+           <th scope="col">Stock code</th>
+           <th scope="col">Holdings</th>
+           <th scope="col">Total value (USD)</th>
+           <th scope="col">Transaction Date</th>
+         </tr>
+       </thead>
+       <tbody>
+
+        <!-- To use the for loop we need to create a dictionary that we can loop through -->
+        {% for stock in curr_port %}
+         <tr>
+           <td>{{ stock.symbol }}</td>
+           <td>{{ stock.holdings }}</td>
+           {% if stock.order_price > 0 %}
+              <td>BOUGHT: {{ stock.order_price }}</td>
+           {% else %}
+              <td>SOLD: {{ stock.order_price }}</td>
+           {% endif %}
+           <td>{{ stock.date }}</td>
+         </tr>
+         {% endfor %}
+
+       </tbody>
+     </table>
+
+{% endblock %}

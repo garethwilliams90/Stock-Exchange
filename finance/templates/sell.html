@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+  <form action="/sell" method="post">
+
+    <!-- Input Stock Code -->
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+    </div>
+
+    <!-- Input number of stocks -->
+    <div class="mb-3">
+        <input class="form-control mx-auto w-auto" id="number" name="number" placeholder="Number Of Stocks" type="number">
+    </div>
+
+    <!-- Submit button to confirm purchase -->
+    <button class="btn btn-primary" type="submit">Sell Now</button>
+  </form>
+{% endblock %}

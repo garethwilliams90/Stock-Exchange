@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quoted
+{% endblock %}
+
+{% block main %}
+    <form action="/quote" method="post">
+        <p>Code: {{ symbol }}</p>
+        <p>Company name: {{ name }}</p>
+        <p>Latest price: {{ price }} (USD Per stock)</p>
+        <p>Total price (USD): {{ order_price }}</p>
+        <!-- Submit button to confirm purchase -->
+        <button class="btn btn-primary" type="submit">Buy Now</button>
+        <!-- Submit button to ask to buy at specific time -->
+        <button class="btn btn-primary" type="submit">Buy at requested time</button>
+        <!-- Submit button to ask to buy at specific price -->
+        <button class="btn btn-primary" type="submit">Buy at requested price</button>
+    </form>
+{% endblock %}
+
